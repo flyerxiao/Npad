@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 # 导入各种库和类
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
 from flask_wtf import Form
 from wtforms import TextAreaField, SubmitField
@@ -63,9 +63,16 @@ def index():
         form.message.data = ''
     # 查询留言列表并赋值
     messagelist = Message.query.order_by(Message.id.desc()).all()
+    # 定义分页路由
+    page = request.args.get('page', 1, type=int)
+    # 使用Flask-SQLAlechemy的paginate()方法
+    pagination = Message.query.order_by(Message.id.desc()).paginate(
+        page, per_page=10, error_out=False)
+    # 设置需要分页的项目
+    messagelist = pagination.items
     # form和message分别赋值传递到index
     return render_template('index.html', form=form, message=message,
-                           messagelist=messagelist)
+                           messagelist=messagelist, pagination=pagination)
 
 
 if __name__ == '__main__':
