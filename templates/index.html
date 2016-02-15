@@ -3,7 +3,19 @@
 
 {% block page_content %}
     <div class="page-header">
+        <!--渲染传入的留言-->
         <h1>{{ message }}</h1>
     </div>
+    <!--渲染留言框实例-->
     {{ wtf.quick_form(form) }}
+    <!--已list方式渲染全部留言-->
+    <ul class="messaagelist">
+        <!--遍历留言-->
+        {% for message in messagelist %}
+            <li class="message">
+                <!--单个留言内容-->
+                {{ message.text }}
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

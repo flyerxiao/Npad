@@ -37,7 +37,7 @@ class Message(db.Model):
     text = db.Column(db.UnicodeText)
 
     def __repr__(self):
-        return '<Message %r>' % self.name
+        return '<Message %r>' % self.text
 
 
 # 定义路由
@@ -61,9 +61,11 @@ def index():
         message = form.message.data
         # 清空留言
         form.message.data = ''
-
+    # 查询留言列表并赋值
+    messagelist = Message.query.order_by(Message.id.desc()).all()
     # form和message分别赋值传递到index
-    return render_template('index.html', form=form, message=message)
+    return render_template('index.html', form=form, message=message,
+                           messagelist=messagelist)
 
 
 if __name__ == '__main__':
