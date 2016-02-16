@@ -63,14 +63,14 @@ def index():
         form.message.data = ''
     # 查询留言列表并赋值
     messagelist = Message.query.order_by(Message.id.desc()).all()
-    # 定义分页路由
+    # 定义查询字符串,默认渲染第1页
     page = request.args.get('page', 1, type=int)
     # 使用Flask-SQLAlechemy的paginate()方法
     pagination = Message.query.order_by(Message.id.desc()).paginate(
         page, per_page=10, error_out=False)
     # 设置需要分页的项目
     messagelist = pagination.items
-    # form和message分别赋值传递到index
+    # 传递到变量参数到模版
     return render_template('index.html', form=form, message=message,
                            messagelist=messagelist, pagination=pagination)
 
