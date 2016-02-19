@@ -1,16 +1,12 @@
 {% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
+
 {% import "macro.html" as macros %}
+
+{% block title %}留言簿首页{% endblock %}
+
 {% block page_content %}
     <div class="page-header">
-        <!--渲染传入的留言-->
-        <h1>{{ message }}</h1>
-    </div>
-    <!--渲染留言框实例-->
-    {{ wtf.quick_form(form) }}
-    <!--分页宏-->
-    <div class="pagination">
-        {{ macros.pagination_widget(pagination, 'index') }}
+        <h1>留言列表</h1>
     </div>
     <!--已list方式渲染全部留言-->
     <ul class="messaagelist">
