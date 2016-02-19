@@ -92,5 +92,15 @@ def add_post():
                            message=session.get('message'))
 
 
+@app.errorhandler(404)
+def not_found(g):
+    return render_template('404.html'), 404
+
+
+@app.errorhandler(500)
+def internal_error(g):
+    return render_template('500.html'), 500
+
+
 if __name__ == '__main__':
     manager.run()
