@@ -2,22 +2,25 @@
 
 {% import "macro.html" as macros %}
 
-{% block title %}留言簿首页{% endblock %}
+{% block title %}留言板首页{% endblock %}
 
 {% block page_content %}
     <div class="page-header">
-        <h1>留言列表</h1>
+        <h3>留言列表</h3>
     </div>
     <!--已list方式渲染全部留言-->
-    <ul class="messaagelist">
-        <!--遍历留言-->
+    <table border="1">
+        <tr>
+            <th>序号</th>
+            <th>内容</th>
+        </tr>
         {% for message in messagelist %}
-            <li class="message">
-                <!--单个留言内容-->
-                {{ message.text }}
-            </li>
+            <tr>
+                <td>{{ message.id }}</td>
+                <td>{{ message.text }}</td>
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
     <!--分页宏-->
     <div class="pagination">
         {{ macros.pagination_widget(pagination, '.index') }}

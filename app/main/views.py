@@ -11,11 +11,11 @@ from ..models import Message
 @main.route('/')
 def index():
     # 查询留言列表并赋值
-    messagelist = Message.query.order_by(Message.id.desc()).all()
+    messagelist = Message.query.order_by(Message.id).all()
     # 定义查询字符串,默认渲染第1页
     page = request.args.get('page', 1, type=int)
     # 使用Flask-SQLAlchemy的paginate()方法
-    pagination = Message.query.order_by(Message.id.desc()).paginate(
+    pagination = Message.query.order_by(Message.id).paginate(
         page, per_page=10, error_out=False)
     # 设置需要分页的项目
     messagelist = pagination.items
