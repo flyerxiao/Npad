@@ -7,6 +7,13 @@
 {% block page_content %}
     <div class="page-header">
         <h3>留言列表</h3>
+        <h4>
+            {% if current_user.is_authenticated %}
+                你好{{ current_user.name }}
+            {% else %}
+                你好陌生人
+            {% endif %}
+        </h4>
     </div>
     <!--已list方式渲染全部留言-->
     <table border="1">
