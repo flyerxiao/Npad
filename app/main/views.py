@@ -24,7 +24,7 @@ def index():
                            pagination=pagination)
 
 
-@main.route('/post/', methods=['GET', 'POST'])
+@main.route('/post', methods=['GET', 'POST'])
 def post():
     # 实例化留言表格
     form = TextForm()
@@ -40,7 +40,7 @@ def post():
             db.session.add(newtext)
         # 重新赋值用来传递给视图
         session['text'] = form.text.data
-        return redirect(url_for('.post'))
+        return redirect(url_for('main.post'))
     # 传递到变量参数到模版
     return render_template('post.html', form=form,
                           text=session.get('text'))

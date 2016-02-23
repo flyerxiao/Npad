@@ -4,9 +4,10 @@
 
 {% block navbar %}
     <ul class="nav nav-pills">
-        <li class="active"><a href="{{ url_for('.index') }}">Npad</a></li>
-        <li><a href="{{ url_for('.index') }}">首页</a></li>
-    <li><a href="{{ url_for('.post') }}">添加留言</a></li>
+        <li class="active"><a href="{{ url_for('main.index') }}">Npad</a></li>
+        <li><a href="{{ url_for('main.index') }}">首页</a></li>
+        <li><a href="{{ url_for('main.post') }}">添加留言</a></li>
+        <li><a href="{{ url_for('auth.login') }}">登陆</a></li>
     </ul>
 {% endblock %}
 

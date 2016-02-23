@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import os
 from app import create_app, db
-from app.models import Message
+from app.models import Message, User
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 
@@ -13,7 +13,7 @@ migrate = Migrate(app, db)
 
 # 注册实例而导入shell
 def make_shell_context():
-    return dict(app=app, db=db, Message=Message)
+    return dict(app=app, db=db, Message=Message, User=User)
 
 
 # 为shell命令注册初始化上下文
