@@ -16,15 +16,19 @@
         </h4>
     </div>
     <!--已list方式渲染全部留言-->
-    <table border="1">
+    <table border="1" width="300">
         <tr>
-            <th>序号</th>
-            <th>内容</th>
+            <th>留言序号</th>
+            <th>留言内容</th>
+            <th>用户ID</th>
+            <th>用户名</th>
         </tr>
         {% for message in messagelist %}
             <tr>
                 <td>{{ message.id }}</td>
+                <td>{{ message.user_id }}</td>
                 <td>{{ message.text }}</td>
+                <td>{{ message.user.name}}</td>
             </tr>
         {% endfor %}
     </table>

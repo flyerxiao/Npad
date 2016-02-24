@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% import "macro.html" as macros %}
+
+{% block title %}用户留言{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h3>{{ user.name }}的留言记录</h3>
+    </div>
+    <table border="1" width="300">
+        <tr>
+            <th>留言序号</th>
+            <th>留言内容</th>
+            <th>用户ID</th>
+            <th>用户名</th>
+        </tr>
+        {% for message in messagelist %}
+            <tr>
+                <td>{{ message.id }}</td>
+                <td>{{ message.text }}</td>
+                <td>{{ message.user_id }}</td>
+                <td>{{ message.user.name }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
