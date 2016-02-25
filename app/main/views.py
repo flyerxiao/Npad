@@ -56,14 +56,6 @@ def user(name):
         abort(404)
     # 用Message表的外键user_id查询当前用的留言并赋值
     messagelist = Message.query.filter_by(user_id=user.id)
-    # 定义查询字符串,默认渲染第1页
-    page = request.args.get('page', 1, type=int)
-    # 使用Flask-SQLAlchemy的paginate()方法
-    pagination = Message.query.filter_by(user_id=user.id).paginate(
-        page, per_page=10, error_out=False)
-    # 设置需要分页的项目
-    messagelist = pagination.items
     # 传递到变量参数到模版
     return render_template('user.html',
-                           user=user, messagelist=messagelist,
-                           pagination=pagination)
+                           user=user, messagelist=messagelist)
