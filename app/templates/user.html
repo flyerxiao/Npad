@@ -2,11 +2,11 @@
 
 {% import "macro.html" as macros %}
 
-{% block title %}用户留言{% endblock %}
+{% block title %}{{ user.name }}的留言记录{% endblock %}
 
 {% block page_content %}
     <div class="page-header">
-        <h3>{{ user.name }}的留言记录</h3>
+        <h3>我的留言记录</h3>
     </div>
     <table border="1" width="300">
         <tr>

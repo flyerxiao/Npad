@@ -20,7 +20,7 @@ def make_shell_context():
 manager.add_command('shell', Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand)
 
-
+# shell加入单元测试
 @manager.command
 def test():
     """Run the unit test"""

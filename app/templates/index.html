@@ -26,8 +26,8 @@
         {% for message in messagelist %}
             <tr>
                 <td>{{ message.id }}</td>
-                <td>{{ message.user_id }}</td>
                 <td>{{ message.text }}</td>
+                <td>{{ message.user_id }}</td>
                 <td>{{ message.user.name}}</td>
             </tr>
         {% endfor %}
