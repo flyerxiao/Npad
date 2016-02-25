@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
 from flask import render_template, request, session, redirect, url_for
 from . import main
 from .forms import TextForm

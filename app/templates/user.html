@@ -8,12 +8,12 @@
     <div class="page-header">
         <h3>我的留言记录</h3>
     </div>
-    <table border="1" width="300">
+    <table class="table-bordered">
         <tr>
-            <th>留言序号</th>
-            <th>留言内容</th>
-            <th>用户ID</th>
-            <th>用户名</th>
+            <th><span class="label label-info">留言序号</span></th>
+            <th><span class="label label-success">留言内容</span></th>
+            <th><span class="label label-info">用户ID</span></th>
+            <th><span class="label label-success">用户名</span></th>
         </tr>
         {% for message in messagelist %}
             <tr>

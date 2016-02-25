@@ -13,7 +13,7 @@
         {% if current_user.is_authenticated %}
             {{ wtf.quick_form(form) }}
         {% else %}
-            <li class="active"><a href="{{ url_for('auth.login') }}">登陆</a>
+            <li class="active"><a href="{{ url_for('auth.login') }}"><span class="glyphicon glyphicon-log-in"></span> 登陆</a>
             </li>
         {% endif %}
     </div>
