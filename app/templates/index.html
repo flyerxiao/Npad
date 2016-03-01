@@ -6,22 +6,22 @@
 
 {% block page_content %}
     <div class="page-header">
-        <h3>留言列表</h3>
+        <h3><span class="glyphicon glyphicon-th-list"></span> 留言列表</h3>
         <p>
             {% if current_user.is_authenticated %}
-                你好{{ current_user.name }}
+                你好 {{ current_user.name }}
             {% else %}
                 你好陌生人
             {% endif %}
         </p>
     </div>
     <!--已list方式渲染全部留言-->
-    <table class="table-bordered">
+    <table class="table-condensed">
         <tr>
-            <th><span class="label label-info">留言序号</span></th>
-            <th><span class="label label-success">留言内容</span></th>
-            <th><span class="label label-info">用户ID</span></th>
-            <th><span class="label label-success">用户名</span></th>
+            <th>留言序号</th>
+            <th>留言内容</th>
+            <th>用户ID</th>
+            <th>用户名</th>
         </tr>
         {% for message in messagelist %}
             <tr>
