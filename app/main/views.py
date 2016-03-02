@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from flask import render_template, request, session, redirect, url_for
+from flask import render_template, session, redirect, url_for
+from flask_login import current_user
 from . import main
 from .forms import TextForm
 from .. import db
 from ..models import Message, User
-from flask_login import current_user
 
 
 @main.route('/')
