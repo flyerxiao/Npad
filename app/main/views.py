@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-from flask import render_template, request, session, redirect, url_for
+from flask import render_template, session, redirect, url_for
+from flask_login import current_user
 from . import main
 from .forms import TextForm
 from .. import db
 from ..models import Message, User
-from flask_login import current_user
 
 
 @main.route('/')
@@ -26,7 +26,7 @@ def post():
     # 判断是否成功提交
     if form.validate_on_submit():
         # 查询数据是否有存在相同的留言内容
-        text = Message.query.filter_by(text=form.text.data).first()
+        text = Message.query.filter_by(text=form.text.data).first_or_404()
         # 如果不相同的话,执行下列命令
         if text is None:
             # 实例化数据模型,并取出表格中的值,再赋予message
@@ -44,7 +44,7 @@ def post():
 @main.route('/user/<name>')
 def user(name):
     # 查询当前用户的id并赋值给user
-    user = User.query.filter_by(name=name).first()
+    user = User.query.filter_by(name=name).first_or_404()
     # 使用Flask-SQLAlchemy的paginate()方法
     pagination = Message.query.filter_by(
         user_id=user.id).paginate(per_page=10, error_out=False)
